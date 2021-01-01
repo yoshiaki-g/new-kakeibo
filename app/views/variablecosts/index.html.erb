@@ -1,9 +1,9 @@
-<% @page_title = "固定費一覧" %>
+<% @page_title = "変動費一覧" %>
 <h2><%= @page_title %></h2>
 
-<%= link_to "固定費の新規登録", new_fixedcost_path %>
+<%= link_to "変動費の新規登録", new_variablecost_path %>
 
-<% if @fixedcosts.present? %>
+<% if @variablecosts.present? %>
 <div>
   <div>
     <tr>
@@ -13,13 +13,13 @@
     </tr>
   </div>
   <div>
-    <% @fixedcosts.each do |fixedcost| %>
+    <% @variablecosts.each do |variablecost| %>
       <tr>
-        <td><%= fixedcost.name %></td>
-        <td><%= fixedcost.description %></td>
+        <td><%= variablecost.name %></td>
+        <td><%= variablecost.description %></td>
         <td>
-          <%= link_to "編集", [:edit, fixedcost] %>
-          <%= link_to "削除", fixedcost, method: :delete,
+          <%= link_to "編集", [:edit, variablecost] %>
+          <%= link_to "削除", variablecost, method: :delete,
           data: { confirm: "本当に削除しますか？"} %>
         </td>
       </tr>
