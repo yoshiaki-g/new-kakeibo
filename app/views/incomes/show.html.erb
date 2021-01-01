@@ -1,0 +1,15 @@
+<h2>収入の詳細</h2>
+
+<%= link_to "編集", edit_income_path %>
+<%= link_to "収入科目一覧に戻る", incomes_path %>
+
+<div>
+  <tr>
+    <th>名前</th>
+    <th><%= @income.name %></th>
+  </tr>
+  <tr>
+    <th>備考</th>
+    <th><%= @income.description %></th>
+  </tr>
+</div>
