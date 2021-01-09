@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   root "top#index"
-  post "income_values/new(/:name)" => "income_values#new"
-  post "fixedcost_values/new(/:name)" => "fixedcost_values#new"
-  post "variablecost_values/new(/:name)" => "variablecost_values#new"
- 
-  resources :incomes
+  # post "income_values/new(/:name)" => "income_values#new"
+
+  resources :incomes do
+    resources :income_values, only:[:index, :create, :new, :edit, :update, :destroy]
+  end
   resources :fixedcosts
+  resources :fixedcost_values, only:[:index, :create, :new, :edit, :update, :destroy]
   resources :variablecosts
-  resources :income_values
-  resources :fixedcost_values
-  resources :variablecost_values
+  resources :variablecost_values, only:[:index, :create, :new, :edit, :update, :destroy]
 end
