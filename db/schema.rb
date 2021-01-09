@@ -12,35 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2021_01_09_045036) do
 
-  create_table "fixedcost_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "year_month", null: false
-    t.integer "value", null: false
-    t.string "description"
-    t.bigint "fixedcost_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["fixedcost_id"], name: "index_fixedcost_values_on_fixedcost_id"
-  end
-
   create_table "fixedcosts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "income_values", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "year_month", null: false
     t.integer "value", null: false
     t.string "description"
-    t.bigint "income_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["income_id"], name: "index_income_values_on_income_id"
   end
 
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.date "year_month", null: false
+    t.integer "value", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -62,11 +46,11 @@ ActiveRecord::Schema.define(version: 2021_01_09_045036) do
 
   create_table "variablecosts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.date "year_month", null: false
+    t.integer "value", null: false
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "fixedcost_values", "fixedcosts"
-  add_foreign_key "income_values", "incomes"
 end

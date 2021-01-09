@@ -10,6 +10,16 @@
 	    <th><%= f.label :description, "説明" %></th>
 	    <td><%= f.text_field :description %></td>
     </tr>
+    <div>
+    <tr>
+      <td><%= f.date_select :year_month,
+        start_year: 2010, end_year: Time.current.year,
+        use_month_numbers: true, discard_day: true %>
+      </td>
+      <th><%= f.label :value, "値" %></th>
+      <td><%= f.text_field :value %></td>
+    </tr>
+    </div>
     <div><%= f.submit "保存する" %></div>
   </div>
 <% end %>

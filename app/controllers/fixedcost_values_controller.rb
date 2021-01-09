@@ -1,2 +1,0 @@
-class FixedcostValuesController < ApplicationController
-end

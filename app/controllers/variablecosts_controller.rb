@@ -39,7 +39,7 @@ class VariablecostsController < ApplicationController
 
   private
   def variablecost_params
-    params.require(:variablecost).permit(:name, :description)
+    params.require(:variablecost).permit(:name, :year_month, :value, :description)
   end
 
   def set_variablecost

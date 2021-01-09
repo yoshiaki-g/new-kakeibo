@@ -4,31 +4,29 @@
 <%= link_to "固定費の新規登録", new_fixedcost_path %>
 
 <% if @fixedcosts.present? %>
-<div>
-  <div>
-    <tr>
-      <th>品名</th>
-      <th>備考</th>
-      <th>操作</th>
-    </tr>
-  </div>
-  <div>
-    <% @fixedcosts.each do |fixedcost| %>
-      <tr>
-        <td><%= fixedcost.name %></td>
-        <td><%= fixedcost.description %></td>
-        <td>
-          <%= link_to "編集", [:edit, fixedcost] %>
-          <%= link_to "削除", fixedcost, method: :delete,
-          data: { confirm: "本当に削除しますか？"} %>
-        </td>
-      </tr>
-    <% end %>
-  </div>
-</div>
-
+<table>
+  <tr>
+    <th>登録年月</th>
+    <th>名称</th>
+    <th>値</th>
+    <th>備考</th>
+    <th>操作</th>
+  </tr>
+  <% @fixedcosts.each do |fixedcost| %>
+  <tr>
+  <td><%= fixedcost.year_month.strftime('%Y年%m月') %></td>
+    <td><%= fixedcost.name %></td>
+    <td><%= fixedcost.value.to_s(:delimited) %> 円</td>
+    <td><%= fixedcost.description %></td>
+    <td>
+    <%= link_to "編集", [:edit, fixedcost] %> |
+    <%= link_to "削除", fixedcost, method: :delete,
+      data: { confirm: "本当に削除しますか？"} %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 <% else %>
-  <p>登録されている固定費がありません</p>
+  <p>登録されているデータがありません。</p>
 <% end %>
-
 <%= link_to 'トップページ戻る', root_path %>

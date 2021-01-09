@@ -10,14 +10,14 @@ class FixedcostsController < ApplicationController
   end
 
   def create
-    @fixedcost = Fixedcost.new(fixedcost_params)
+    # binding.pry
+    @fixedcost = Fixedcost.create(fixedcost_params)
     if @fixedcost.save
-      redirect_to fixedcosts_path, notice: "固定費を登録しました"
+      redirect_to action: :index, notice: "固定費を登録しました"
     else
-      render "new"
+      render action: :new, notice: "登録に失敗しました"
     end
   end
-
   def edit
   end
 
@@ -39,7 +39,7 @@ class FixedcostsController < ApplicationController
 
   private
   def fixedcost_params
-    params.require(:fixedcost).permit(:name, :description)
+    params.require(:fixedcost).permit(:name, :year_month, :value, :description)
   end
 
   def set_fixedcost
