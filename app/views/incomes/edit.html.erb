@@ -1,0 +1,15 @@
+<h2>収入登録</h2>
+<%= form_with model: @income, local: true do |f| %>
+  <%= link_to "収入一覧に戻る", incomes_path %>
+  <div>
+    <tr>
+      <th><%= f.label :name, "名前" %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :description, "説明" %></th>
+      <td><%= f.text_field :description %></td>
+    </tr>
+    <div><%= f.submit "保存する" %></div>
+  </div>
+<% end %>

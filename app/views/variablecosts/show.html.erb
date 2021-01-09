@@ -1,0 +1,15 @@
+<h2>変動費の詳細</h2>
+
+<%= link_to "編集", edit_variablecost_path %>
+<%= link_to "変動費一覧に戻る", variablecosts_path %>
+
+<div>
+  <tr>
+    <th>名前</th>
+    <th><%= @variablecost.name %></th>
+  </tr>
+  <tr>
+    <th>備考</th>
+    <th><%= @fvariablecost.description %></th>
+  </tr>
+</div>
