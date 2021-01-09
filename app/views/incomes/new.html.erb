@@ -1,5 +1,5 @@
 <h2>収入登録</h2>
-<%= form_with model: @income_form, url: '/incomes', local: true do |f| %>
+<%= form_with model: @income, local: true do |f| %>
   <%= link_to "収入一覧に戻る", incomes_path %>
 <table>
   <tr>
@@ -8,7 +8,7 @@
     <th>値</th>
     <th>備考</th>
   </tr>
-  <tr>
+  <tr>  
     <td>
       <%= f.date_select :year_month,
             start_year: 2010, end_year: Time.current.year,

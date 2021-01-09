@@ -6,16 +6,16 @@ class IncomesController < ApplicationController
   end
 
   def new
-    @income_form = IncomeForm.new
+    @income = Income.new
   end
 
   def create
-    binding.pry
-    @income_form = IncomeForm.new(income_form_params)
+    # binding.pry
+    @income = Income.create(income_params)
     if @income.save
-      redirect_to incomes_path, notice: "収入を登録しました"
+      redirect_to action: :index, notice: "収入を登録しました"
     else
-      render root_path
+      render action: :new, notice: "登録に失敗しました"
     end
   end
 
@@ -39,8 +39,8 @@ class IncomesController < ApplicationController
   end
 
   private
-  def income_form_params
-    params.require(:income_form).permit(:name, :description, :year_month, :value, :description).merge(income_id: params[:income_id])
+  def income_params
+    params.require(:income).permit(:name, :year_month, :value, :description)
   end
 
   def set_income
