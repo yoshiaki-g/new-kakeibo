@@ -1,11 +1,12 @@
 <h2>変動費の登録</h2>
 <%= form_with model: @variablecost, local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
   <%= link_to "変動費一覧に戻る", variablecosts_path %>
   <table>
   <tr>
     <th>登録年月</th>
-    <th>名前</th>
-    <th>値</th>
+    <th>名称</th>
+    <th>金額</th>
     <th>備考</th>
   </tr>
   <tr>  

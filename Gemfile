@@ -58,3 +58,5 @@ gem 'pry-rails'
 gem 'devise'
 
 gem "chartkick"
+
+gem 'rails-i18n'

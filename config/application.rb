@@ -18,5 +18,6 @@ module NewKakeibo
 
     config.action_controller.permit_all_parameters = true
     
+    config.i18n.default_locale = :ja
   end
 end

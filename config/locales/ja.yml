@@ -1,0 +1,20 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: ニックネーム
+     income:
+       name: 名称
+       value: 金額
+       year_month: 登録年月
+       description: 備考
+     fixedcost:
+       name: 名称
+       value: 金額
+       year_month: 登録年月
+       description: 備考
+     variablecost:
+       name: 名称
+       value: 金額
+       year_month: 登録年月
+       description: 備考
