@@ -3,11 +3,11 @@
   <%= link_to "収入一覧に戻る", incomes_path %>
   <div>
     <tr>
-      <th><%= f.label :name, "名前" %></th>
+      <th><%= f.label :name, "名称" %></th>
       <td><%= f.text_field :name %></td>
     </tr>
     <tr>
-      <th><%= f.label :description, "説明" %></th>
+      <th><%= f.label :description, "備考" %></th>
       <td><%= f.text_field :description %></td>
     </tr>
     <div>
@@ -16,7 +16,7 @@
         start_year: 2010, end_year: Time.current.year,
         use_month_numbers: true, discard_day: true %>
       </td>
-      <th><%= f.label :value, "値" %></th>
+      <th><%= f.label :value, "金額" %></th>
       <td><%= f.text_field :value %></td>
     </tr>
     </div>

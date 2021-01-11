@@ -1,8 +1,10 @@
 class IncomesController < ApplicationController
   before_action :set_income, only: [:edit, :show, :update, :destroy]
+  before_action :confirmation
 
   def index
-    @incomes = Income.order(created_at: :asc)
+    incomes = Income.where(user_id: current_user.id)
+    @incomes = incomes.order(created_at: :asc)
   end
 
   def new
@@ -39,11 +41,17 @@ class IncomesController < ApplicationController
 
   private
   def income_params
-    params.require(:income).permit(:name, :year_month, :value, :description)
+    params.require(:income).permit(:name, :year_month, :value, :description).merge(user_id: current_user.id)
   end
 
   def set_income
     @income = Income.find(params[:id])
+  end
+
+  def confirmation
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

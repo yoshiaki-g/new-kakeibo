@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "top#index"
   get "balance_confirm" => "balance_confirm#top"
   post "balance_confirm/show(/:name)" => "balance_confirm#show"
+  get "balance_confirm/show(/:name)" => "balance_confirm#show"
   post "blance_confirm/show_year(/:name)" => "balance_confirm#show_year"
+  get "blance_confirm/show_year(/:name)" => "balance_confirm#show_year"
   
   resources :incomes 
   resources :fixedcosts
