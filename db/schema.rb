@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_045036) do
+ActiveRecord::Schema.define(version: 2021_01_01_172800) do
 
   create_table "fixedcosts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.date "year_month", null: false
     t.integer "value", null: false
     t.string "description"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_fixedcosts_on_user_id"
   end
 
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -26,15 +28,16 @@ ActiveRecord::Schema.define(version: 2021_01_09_045036) do
     t.date "year_month", null: false
     t.integer "value", null: false
     t.string "description"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -49,8 +52,13 @@ ActiveRecord::Schema.define(version: 2021_01_09_045036) do
     t.date "year_month", null: false
     t.integer "value", null: false
     t.string "description"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_variablecosts_on_user_id"
   end
 
+  add_foreign_key "fixedcosts", "users"
+  add_foreign_key "incomes", "users"
+  add_foreign_key "variablecosts", "users"
 end

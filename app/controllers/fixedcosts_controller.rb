@@ -1,8 +1,10 @@
 class FixedcostsController < ApplicationController
   before_action :set_fixedcost, only: [:edit, :show, :update, :destroy]
+  before_action :confirmation
 
   def index
-    @fixedcosts = Fixedcost.order(created_at: :asc)
+    fixedcosts = Fixedcost.where(user_id: current_user.id)
+    @fixedcosts = fixedcosts.order(created_at: :asc)
   end
 
   def new
@@ -38,11 +40,17 @@ class FixedcostsController < ApplicationController
 
   private
   def fixedcost_params
-    params.require(:fixedcost).permit(:name, :year_month, :value, :description)
+    params.require(:fixedcost).permit(:name, :year_month, :value, :description).merge(user_id: current_user.id)
   end
 
   def set_fixedcost
     @fixedcost = Fixedcost.find(params[:id])
+  end
+
+  def confirmation
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

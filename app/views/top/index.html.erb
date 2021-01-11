@@ -1,5 +1,16 @@
-<h1>Top#index</h1>
-<p>シンプルな家計簿アプリです。</p>
+<h1>New_Kakeibo</h1>
+<p>とても使いやすい家計簿アプリ</p>
+<% if user_signed_in? %>
+<ul>
+  <li><%= link_to current_user.name, "#", class: "user-nickname" %></li>
+  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+</ul>
+<% else %>
+<ul>
+  <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+  <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+</ul>
+<% end %>
 
 <h2>収支設定</h2>
 <ul>

@@ -1,8 +1,10 @@
 class VariablecostsController < ApplicationController
   before_action :set_variablecost, only: [:edit, :show, :update, :destroy]
+  before_action :confirmation
 
   def index
-    @variablecosts = Variablecost.order(created_at: :asc)
+    variablecosts = Variablecost.where(user_id: current_user.id)
+    @variablecosts = variablecosts.order(created_at: :asc)
   end
 
   def new
@@ -39,11 +41,17 @@ class VariablecostsController < ApplicationController
 
   private
   def variablecost_params
-    params.require(:variablecost).permit(:name, :year_month, :value, :description)
+    params.require(:variablecost).permit(:name, :year_month, :value, :description).merge(user_id: current_user.id)
   end
 
   def set_variablecost
     @variablecost = Variablecost.find(params[:id])
+  end
+
+  def confirmation
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end
