@@ -9,9 +9,11 @@
 <%= form_tag({controller: :balance_confirm, action: :show_year}, {method: :post}) do %>
 	<input type="hidden" name="year">
 		<select name="year">
- 			<% 2010.upto(2050) do |n| %>
+ 			<% 2021.upto(2050) do |n| %>
 				<option value=<%= n.to_s %>><%= n %></option>
 			<% end %>
 		</select>
 	<input type="submit">
 <% end %>
+
+<%= link_to 'トップページ戻る', root_path %>

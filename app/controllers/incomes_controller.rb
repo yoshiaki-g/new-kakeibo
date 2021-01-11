@@ -10,7 +10,6 @@ class IncomesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @income = Income.create(income_params)
     if @income.save
       redirect_to action: :index, notice: "収入を登録しました"

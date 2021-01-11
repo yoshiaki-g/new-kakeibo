@@ -10,7 +10,6 @@ class FixedcostsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @fixedcost = Fixedcost.create(fixedcost_params)
     if @fixedcost.save
       redirect_to action: :index, notice: "固定費を登録しました"

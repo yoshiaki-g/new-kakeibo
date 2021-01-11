@@ -1,4 +1,5 @@
 <h2><%= @year_month %> 月次収支確認</h2>
+<%= link_to '戻る', balance_confirm_path %>
  
 <h3>収入</h3>
 <% if @income.present? %>
@@ -86,6 +87,11 @@
 		</tr>
 	</tbody>
 </table>
+
+<% else %>
+	<p>登録されている変動費がありません。</p>
+<% end %>
+
  
 <h3>収支結果</h3>
  
@@ -98,8 +104,24 @@
 </tr>
 </tbody>
 </table>
-<b>収支差：<%= @balance_difference %> 円</b>
  
-<% else %>
-	<p>登録されている変動費がありません。</p>
-<% end %>
+<div>
+<%= pie_chart @data,colors: ["#3333cc","#cc3333","#339966"], donut: true , width: "500px" %>
+<table border="1" width="500">
+  <tr>
+    <th>収入合計値</th>
+    <th>固定費合計値</th>
+    <th>変動費合計値</th>
+    <th>収支差</th>
+
+  </tr>
+    <tr>
+    <th><%=@income_total%>円</th>
+    <th><%=@fixedcost_total%>円</th>
+    <th><%=@variablecost_total%>円</th>
+    <th><%=@balance_difference%>円</th>
+  </tr>
+</table> 
+</div>
+
+<%= link_to 'トップページ戻る', root_path %>
