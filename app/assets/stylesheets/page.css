@@ -21,7 +21,7 @@ body {
   font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3" sans-serif;
   padding: 0;
   margin: 0;
-  background: url(img/bg-body-top.jpg) repeat-x 0 0;
+  /* background: url(img/bg-body-top.jpg) repeat-x 0 0; */
 }
 
 #wrapper {
@@ -29,7 +29,7 @@ body {
   width: 800px;
   margin: 0 auto;
   padding: 0 10px;
-  background: url(img/bg-wrapper.jpg) no-repeat 0 0;
+  /* background: url(img/bg-wrapper.jpg) no-repeat 0 0; */
   background-size:contain;
 }
 
@@ -39,7 +39,8 @@ body {
   margin-bottom: 50px;
   position: relative;
   box-sizing: 100%;
-  background: url(img/bg-header-top.jpg) no-repeat 0 0;
+  background-color: #99CC00;
+  /* background: url(img/bg-header-top.jpg) no-repeat 0 0; */
 }
 
 #contents {
@@ -62,7 +63,8 @@ body {
 
 #footer {
   padding: 2em 0 0.5em;
-  background: url(img/bg-body.jpg) repeat-x 0 100%;
+  background-color: #99CC00;
+  /* background: url(img/bg-body.jpg) repeat-x 0 100%; */
 }
 
 h1 {
@@ -71,7 +73,7 @@ h1 {
   position: absolute;
   top: 30px;
   left: 10px;
-  color: #360;
+  color: #333;
 }
 
 .logo {
@@ -84,7 +86,7 @@ h1 {
 
 .logo a {
   font-weight: bold;
-  color: #360;
+  color: #333;
   text-decoration: none;
 }
 
@@ -104,7 +106,7 @@ h1 {
 .ul-info {
   list-style-type: none;
   position: absolute;
-  top:25px;
+  top:50px;
   right: 15px;
 }
 
@@ -115,7 +117,7 @@ h1 {
 
 .ul-info li a {
   text-decoration:none;
-  color: #fff;
+  color: #000;
 }
 
 .ul-info li a:hover {
