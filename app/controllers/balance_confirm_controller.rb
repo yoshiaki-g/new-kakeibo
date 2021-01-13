@@ -1,7 +1,7 @@
 class BalanceConfirmController < ApplicationController
   before_action :confirmation
 
-  def top
+  def index
   end
 
   def show

@@ -1,26 +1,45 @@
-<h2>変動費の登録</h2>
-<%= form_with model: @variablecost, local: true do |f| %>
-<%= render 'shared/error_messages', model: f.object %>
-  <%= link_to "変動費一覧に戻る", variablecosts_path %>
-  <table>
-  <tr>
-    <th>登録年月</th>
-    <th>名称</th>
-    <th>金額</th>
-    <th>備考</th>
-  </tr>
-  <tr>  
-    <td>
-      <%= f.date_select :year_month,
+<div id="wrapper">
+  <%= render "shared/header" %>
+    <div id="contents">
+      <h2>変動費登録</h2>
+      <%= form_with model: @variablecost, local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+      <table border="1">
+        <tr>
+          <th>登録年月</th>
+          <th>名称</th>
+          <th>金額</th>
+          <th>備考</th>
+        </tr>
+        <tr>  
+          <td>
+            <%= f.date_select :year_month,
             start_year: 2010, end_year: Time.current.year,
-            use_month_numbers: true, discard_day: true, default: @year_month
-            %>
-    </td>
-    <td><%= f.text_field :name %></td>
-    <td><%= f.text_field :value, size: 8 %></td>
-    <td><%= f.text_field :description, size: 25 %></td>
- </tr>
-</table>
-    <div><%= f.submit "保存する" %></div>
-
-<% end %>
+            use_month_numbers: true, discard_day: true, default: @year_month%>
+          </td>
+          <td><%= f.text_field :name, size: 15 %></td>
+          <td><%= f.text_field :value, size: 8 %></td>
+          <td><%= f.text_field :description, size: 15 %></td>
+       </tr>
+      </table>
+      <br>
+        <div><%= f.submit "保存する" %></div> 
+        <% end %>
+    </div>
+    <br>
+    <div id="sidebar">
+    <p class="side-title">収支設定</p>
+      <ul class="localnavi">
+        <li><%= link_to "収入設定", :incomes %></li>
+        <li><%= link_to "固定費設定", :fixedcosts %></li>
+        <li><%= link_to "変動費設定", :variablecosts %></li>
+      </ul>
+        <p class="side-title">収支確認</p>
+      <ul class="localnavi">
+        <li><%= link_to "収支確認画面", balance_confirm_path %></li>
+      </ul>
+      <p><%= link_to '戻る', variablecosts_path %></p>
+  </div>
+  <p id="cds">Yoshiaki</p>
+<%= render "shared/hooter" %>
+</div>

@@ -1,31 +1,25 @@
-<h1>New_Kakeibo</h1>
-<p>とても使いやすい家計簿アプリ</p>
-<% if user_signed_in? %>
-<ul>
-  <li><%= link_to current_user.name, "#", class: "user-nickname" %></li>
-  <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-</ul>
-<% else %>
-<ul>
-  <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-  <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-</ul>
-<% end %>
-
-<h2>収支設定</h2>
-<ul>
-  <li><%= link_to "収入設定", :incomes %></li>
-</ul>
-
-<ul>
-  <li><%= link_to "固定費設定", :fixedcosts %></li>
-</ul>
-
-<ul>
-  <li><%= link_to "変動費設定", :variablecosts %></li>
-</ul>
-
-<h2>収支確認</h2>
-<ul>
-  <li><%= link_to "収支確認画面", balance_confirm_path %></li>
-</ul>
+<div id="wrapper">
+<%= render "shared/header" %>
+  <div id="contents">
+    <h2>New Kakeiboについて</h2>
+      <p>収支のカテゴリーは、あなたの好きな科目を登録することができる</p>
+      <p>月ごとの収支をグラフで確認できる</p>
+      <p>年間の収支をグラフで確認できる</p>
+      <p>さあ、あなたも活用してみよう！！</p>
+  </div>
+  <br>
+  <div id="sidebar">
+    <p class="side-title">収支設定</p>
+      <ul class="localnavi">
+        <li><%= link_to "収入設定", :incomes %></li>
+        <li><%= link_to "固定費設定", :fixedcosts %></li>
+        <li><%= link_to "変動費設定", :variablecosts %></li>
+      </ul>
+        <p class="side-title">収支確認</p>
+      <ul class="localnavi">
+        <li><%= link_to "収支確認画面", balance_confirm_path %></li>
+      </ul>
+  </div>
+  <p id="cds">Yoshiaki</p>
+<%= render "shared/hooter" %>
+</div>

@@ -1,0 +1,36 @@
+<div id="wrapper">
+<%= render "shared/header" %>
+  <div id="contents">
+    <h2>月次収支確認</h2>
+      <p><%= form_tag({controller: :balance_confirm, action: :show}, {method: :post}) do %>
+        <input type="month" name="year_month">
+        <input type="submit">
+      <% end %></p>
+      <br>
+    <h3>年間収支確認</h3>
+      <p><%= form_tag({controller: :balance_confirm, action: :show_year}, {method: :post}) do %>
+        <input type="hidden" name="year">
+        <select name="year">
+          <% 2021.upto(2050) do |n| %>
+            <option value=<%= n.to_s %>><%= n %></option>
+          <% end %>
+        </select>
+        <input type="submit">
+      <% end %></p>
+  </div>
+  <br>
+    <div id="sidebar">
+    <p class="side-title">収支設定</p>
+      <ul class="localnavi">
+        <li><%= link_to "収入設定", :incomes %></li>
+        <li><%= link_to "固定費設定", :fixedcosts %></li>
+        <li><%= link_to "変動費設定", :variablecosts %></li>
+      </ul>
+        <p class="side-title">収支確認</p>
+      <ul class="localnavi">
+        <li><%= link_to "収支確認画面", balance_confirm_path %></li>
+      </ul>
+  </div>
+  <p id="cds">Yoshiaki</p>
+<%= render "shared/hooter" %>
+</div>

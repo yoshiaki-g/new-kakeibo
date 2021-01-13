@@ -1,125 +1,145 @@
-<h2><%= @year_month %> 月次収支確認</h2>
-<%= link_to '戻る', balance_confirm_path %>
- 
-<h3>収入</h3>
-<% if @income.present? %>
-<table>
-  <thead>
-    <tr>
-      <th>科目名</th>
-      <th>値</th>
-      <th>備考</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @income.each do |income| %>
-      <tr>
-        <td><%= income.name %></td>
-        <td style="text-align: right"><%= income.value %>円</td>
-        <td><%= income.description %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><b>収入合計</b></td>
-      <td style="text-align: right"><b><%= @income_total %>円</b></td>
-    </tr>
-  </tbody>
-</table>
- 
-<% else %>
-  <p>登録されている収入がありません。</p>
-<% end %>
- 
-<h3>固定費</h3>
-<% if @fixedcost.present? %>
-<table>
-  <thead>
-    <tr>
-      <th>科目名</th>
-      <th>値</th>
-      <th>備考</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @fixedcost.each do |fixedcost| %>
-      <tr>
-        <td><%= fixedcost.name %></td>
-        <td style="text-align: right"><%= fixedcost.value %>円</td>
-        <td><%= fixedcost.description %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><b>固定費合計</b></td>
-      <td style="text-align: right"><b><%= @fixedcost_total %>円</b></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+<div id="wrapper">
+  <%= render "shared/header" %>
+    <div id="contents">
+      <h4><%= @year_month %> 月次収支確認</h4>
+      <h2>収入</h2>
+      <% if @income.present? %>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>科目名</th>
+            <th>値</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @income.each do |income| %>
+            <tr>
+              <td><%= income.name %></td>
+              <td style="text-align: right"><%= income.value %>円</td>
+              <td><%= income.description %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><b>収入合計</b></td>
+            <td style="text-align: right"><b><%= @income_total %>円</b></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table> 
+      <% else %>
+        <p>登録されている収入がありません。</p>
+      <% end %>
 
-<% else %>
-  <p>登録されている固定費がありません。</p>
-<% end %>
+      <br>
 
-<h3>変動費</h3>
-<% if @variablecost.present? %>
-<table>
-  <thead>
-    <tr>
-      <th>科目名</th>
-      <th>値</th>
-      <th>備考</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @variablecost.each do |variablecost| %>
-      <tr>
-        <td><%= variablecost.name %></td>
-        <td style="text-align: right"><%= variablecost.value %>円</td>
-        <td><%= variablecost.description %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><b>変動費合計</b></td>
-      <td style="text-align: right"><b><%= @variablecost_total %>円</b></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+      <h3>固定費</h3>
+      <% if @fixedcost.present? %>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>科目名</th>
+            <th>値</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @fixedcost.each do |fixedcost| %>
+            <tr>
+              <td><%= fixedcost.name %></td>
+              <td style="text-align: right"><%= fixedcost.value %>円</td>
+              <td><%= fixedcost.description %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><b>固定費合計</b></td>
+            <td style="text-align: right"><b><%= @fixedcost_total %>円</b></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <% else %>
+        <p>登録されている固定費がありません。</p>
+      <% end %>
 
-<% else %>
-  <p>登録されている変動費がありません。</p>
-<% end %>
+      <br>
 
+      <h4>変動費</h4>
+      <% if @variablecost.present? %>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>科目名</th>
+            <th>値</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @variablecost.each do |variablecost| %>
+            <tr>
+              <td><%= variablecost.name %></td>
+              <td style="text-align: right"><%= variablecost.value %>円</td>
+              <td><%= variablecost.description %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><b>変動費合計</b></td>
+            <td style="text-align: right"><b><%= @variablecost_total %>円</b></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <% else %>
+        <p>登録されている固定費がありません。</p>
+      <% end %>
 
-<h3>収支結果</h3>
+      <br>
 
-<table>
-<tbody>
-<tr>
-  <td><b>収支差</b></td>
-  <td style="text-align: right"><b><%= @balance_difference %>円</b></td>
-  <td></td>
-</tr>
-</tbody>
-</table>
+      <h3>収支結果</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td><b>収支差</b></td>
+            <td style="text-align: right"><b><%= @balance_difference %>円</b></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
-<div>
-<%= pie_chart @data,colors: ["#3333cc","#cc3333","#339966"], donut: true , width: "500px" %>
-<table border="1" width="500">
-  <tr>
-    <th>収入合計値</th>
-    <th>固定費合計値</th>
-    <th>変動費合計値</th>
-    <th>収支差</th>
+      <br>
 
-  </tr>
-    <tr>
-    <th><%=@income_total%>円</th>
-    <th><%=@fixedcost_total%>円</th>
-    <th><%=@variablecost_total%>円</th>
-    <th><%=@balance_difference%>円</th>
-  </tr>
-</table> 
+      <div>
+      <%= pie_chart @data,colors: ["#3333cc","#cc3333","#339966"], donut: true , width: "500px" %>
+        <table border="1" width="90%">
+          <tr>
+            <th>収入合計値</th>
+            <th>固定費合計値</th>
+            <th>変動費合計値</th>
+            <th>収支差</th>
+          </tr>
+          <tr>
+            <td><%=@income_total%>円</td>
+            <td><%=@fixedcost_total%>円</td>
+            <td><%=@variablecost_total%>円</td>
+            <td><%=@balance_difference%>円</td>
+          </tr>
+        </table> 
+      </div>
+    </div>
+    <br>
+    <div id="sidebar">
+    <p class="side-title">収支設定</p>
+      <ul class="localnavi">
+        <li><%= link_to "収入設定", :incomes %></li>
+        <li><%= link_to "固定費設定", :fixedcosts %></li>
+        <li><%= link_to "変動費設定", :variablecosts %></li>
+      </ul>
+        <p class="side-title">収支確認</p>
+      <ul class="localnavi">
+        <li><%= link_to "収支確認画面", balance_confirm_path %></li>
+      </ul>
+      <p><%= link_to '戻る', balance_confirm_path %></p>
+  </div>
+  <p id="cds">Yoshiaki</p>
+  <%= render "shared/hooter" %>
 </div>
-
-<%= link_to 'トップページ戻る', root_path %>

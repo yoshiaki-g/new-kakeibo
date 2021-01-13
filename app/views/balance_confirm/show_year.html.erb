@@ -1,51 +1,67 @@
-<h2><%= @year %>年 年間収支確認</h2>
-<%= link_to '戻る', balance_confirm_path %>
-
- 
-<table>
-	<thead>
-    <tr>
-      <th>年月</th>
-      <th>収入合計値</th>
-      <th>固定費合計値</th>
-      <th>変動費合計値</th>
-      <th>収支（収入-費用）結果</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% month=1 %>
-  <% 0.upto(11) do |i| %>
-    <% if @income_totals[i].present? %>
-      <tr>
-      <td><%= @year %>年<%= i+1 %>月</td>
-      <td><%= @income_totals[i] %>円</td>
-      <td><%= @fixedcost_totals[i] %>円</td>
-      <td><%= @variablecost_totals[i] %>円</td>
-      <td><%= @balance_differences[i] %>円</td>
-      </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-</table>
-
-
-<div>
-<%= pie_chart @data,colors: ["#3333cc","#cc3333","#339966"], donut: true , width: "500px" %>
-<table border="1" width="500">
-  <tr>
-    <th>年間収入合計値</th>
-    <th>年間固定費合計値</th>
-    <th>年間変動費合計値</th>
-    <th>年間収支差</th>
-
-  </tr>
-    <tr>
-    <th><%=@annual_incomes%>円</th>
-    <th><%=@annual_fixedcosts%>円</th>
-    <th><%=@annual_variablecosts%>円</th>
-    <th><%=@annual_balance_differences%>円</th>
-  </tr>
-</table> 
+<div id="wrapper">
+<%= render "shared/header" %>
+  <div id="contents">
+    <h2><%= @year %>年 年間収支確認</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>年月</th>
+            <th>収入合計値</th>
+            <th>固定費合計値</th>
+            <th>変動費合計値</th>
+            <th>収支（収入-費用）結果</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% month=1 %>
+        <% 0.upto(11) do |i| %>
+          <% if @income_totals[i].present? %>
+            <tr>
+            <td><%= @year %>年<%= i+1 %>月</td>
+            <td><%= @income_totals[i] %>円</td>
+            <td><%= @fixedcost_totals[i] %>円</td>
+            <td><%= @variablecost_totals[i] %>円</td>
+            <td><%= @balance_differences[i] %>円</td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+              <br>
+    <h3>年間収支合計グラフ</h3>
+      <div>
+        <%= pie_chart @data,colors: ["#3333cc","#cc3333","#339966"], donut: true , width: "500px" %>
+        <table border="1" width="90%">
+          <tr>
+            <th>年間収入合計値</th>
+            <th>年間固定費合計値</th>
+            <th>年間変動費合計値</th>
+            <th>年間収支差</th>
+        
+          </tr>
+            <tr>
+            <td><%=@annual_incomes%>円</td>
+            <td><%=@annual_fixedcosts%>円</td>
+            <td><%=@annual_variablecosts%>円</td>
+            <td><%=@annual_balance_differences%>円</td>
+          </tr>
+        </table> 
+      </div>
+  </div>
+  <br>
+  <div id="sidebar">
+    <p class="side-title">収支設定</p>
+      <ul class="localnavi">
+        <li><%= link_to "収入設定", :incomes %></li>
+        <li><%= link_to "固定費設定", :fixedcosts %></li>
+        <li><%= link_to "変動費設定", :variablecosts %></li>
+      </ul>
+        <p class="side-title">収支確認</p>
+      <ul class="localnavi">
+        <li><%= link_to "収支確認画面", balance_confirm_path %></li>
+      </ul>
+      <p><%= link_to '戻る', balance_confirm_path %></p>
+  </div>
+  <p id="cds">Yoshiaki</p>
+  <%= render "shared/hooter" %>
 </div>
-
-<%= link_to 'トップページ戻る', root_path %>
